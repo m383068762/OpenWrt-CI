@@ -60,9 +60,9 @@ jobs:
       - name: git clone
         run: |
           git clone https://github.com/coolsnowwolf/lede
-          cd lede
       - name: Update feeds
         run: |
+          cd lede
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           make menuconfig
