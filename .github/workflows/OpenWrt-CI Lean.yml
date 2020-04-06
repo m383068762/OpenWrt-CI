@@ -30,7 +30,7 @@ jobs:
           ref: master
         #      ↑↑↑ 改成你的分支名, 一般是master
 
-      - name: Initialization environment
+      - name: 准备环境
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
@@ -54,18 +54,25 @@ jobs:
             mysql* \
             php*
           sudo -E apt-get update
-          sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
+          sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
-      - name: git clone
+      - name: 源码复制
         run: |
           git clone https://github.com/coolsnowwolf/lede
-      - name: Update feeds
+      - name: 获取升级包？
         run: |
           cd lede
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-      - name: Costom configure file
+          make menuconfig
+      - name: 下载dl库
+        run: |
+          make -j8 download v=s
+      - name: 编译线程
+        run: |
+          make -j1 V=s
+      - name: 固件定制部分
         run: |
           rm -f ./.config*
           touch ./.config
