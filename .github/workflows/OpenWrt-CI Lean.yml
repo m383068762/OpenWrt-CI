@@ -65,7 +65,6 @@ jobs:
           cd lede
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          make menuconfig
       - name: 下载dl库
         run: |
           make -j8 download v=s
