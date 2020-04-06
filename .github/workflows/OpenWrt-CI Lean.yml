@@ -184,7 +184,7 @@ jobs:
           # 
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
-      - name: Download package source code
+      - name: 下载源代码
         run: |
           cd lede
           make download -j8
@@ -199,4 +199,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt firmware
-          path: /lede/bin/targets
+          path: /OpenWrt-CI
