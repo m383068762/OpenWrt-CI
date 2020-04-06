@@ -199,4 +199,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt firmware
-          path: /OpenWrt-CI
+          path: ./OpenWrt-CI
