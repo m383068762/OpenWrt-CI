@@ -62,15 +62,9 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede
       - name: 源码复制2
         run: |
-          cd package
-          mkdir openwrt-packages
-          cd openwrt-packages
           git clone https://github.com/koolshare/ledesoft.git
       - name: 源码复制3
         run: |
-          cd package
-          mkdir openwrt-packages
-          cd openwrt-packages
           git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
       - name: 获取升级包？
         run: |
