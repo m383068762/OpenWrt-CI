@@ -60,12 +60,6 @@ jobs:
       - name: 源码复制1
         run: |
           git clone https://github.com/coolsnowwolf/lede
-      - name: 源码复制2
-        run: |
-          git clone https://github.com/koolshare/ledesoft.git
-      - name: 源码复制3
-        run: |
-          git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
       - name: 获取升级包？
         run: |
           cd lede
@@ -142,16 +136,6 @@ jobs:
           EOF
           # 常用LuCI插件选择:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_serverchan=y
-          CONFIG_PACKAGE_easyexplorer=y
-          CONFIG_PACKAGE_UnblockNeteaseMusic=y
-          CONFIG_PACKAGE_UnblockNeteaseMusicGo=y
-          CONFIG_PACKAGE_luci-app-airplay2=y
-          CONFIG_PACKAGE_luci-app-diskman=y
-          CONFIG_PACKAGE_luci-app-dockerman=y
-          CONFIG_PACKAGE_samba4=y
-          CONFIG_PACKAGE_trojan=y
-          CONFIG_PACKAGE_ddnsto=y
           CONFIG_PACKAGE_luci-app-adbyby-plus=y
           CONFIG_PACKAGE_luci-app-aria2=y
           CONFIG_PACKAGE_luci-app-docker=y
